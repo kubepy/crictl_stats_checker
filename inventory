@@ -2,7 +2,7 @@
 ansible_user=core
 ansible_become=yes
 
-[host]
+[nodes]
 master-0.ocp4.example.com
 master-1.ocp4.example.com
 master-2.ocp4.example.com
