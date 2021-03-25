@@ -15,12 +15,12 @@ cat crictl_stats.sh/20210325T152633/* | sort -h -k5 -r | column -t
 cat crictl_stats.sh/20210325T152633/* | sort -h -k6 -r | column -t
 ```
 
-##### sort by the Disk usage
+#### sort by the Disk usage
 ```
 cat crictl_stats.sh/20210325T152633/* | sort -h -k7 -r | column -t
 ```
 
-##### sort by the Inodes usage
+#### sort by the Inodes usage
 ```
 cat crictl_stats.sh/20210325T152633/* | sort -h -k8 -r | column -t
 ```
