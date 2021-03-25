@@ -1,0 +1,22 @@
+---
+# tasks file for multiple_remote_shell_script
+- name: Remote execute the shell script of '{{ item }}'
+  script: "{{ item }}"
+  register: shell_script_results
+
+- name: Output the results of '{{ item }}' script
+  debug:
+    msg: "{{shell_script_results.stdout_lines }}"
+
+- name: Create the results folder {{ output_path }}/{{ item | basename }}/{{ fetch_timestamp }}
+  local_action:
+    module: file
+    state: directory
+    path: "{{ output_path }}/{{ item | basename }}/{{ fetch_timestamp }}"
+  run_once: yes
+
+- name: Generate the shell script '{{ item }}' results for {{ output_path }}/{{ item | basename }}/{{ fetch_timestamp }}
+  local_action:
+    module: copy
+    content: "{{shell_script_results.stdout }}"
+    dest: "{{ output_path }}/{{ item | basename }}/{{ fetch_timestamp }}/{{ ansible_fqdn }}.txt"

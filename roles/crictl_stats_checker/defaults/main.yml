@@ -1,0 +1,5 @@
+---
+# defaults file for crictl_stats_checker
+output_path: .
+shell_script:
+  - "crictl_stats.sh"
