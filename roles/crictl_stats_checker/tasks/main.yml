@@ -14,8 +14,14 @@
 - name: setup the current system timestamp
   set_fact:
     fetch_timestamp: "{{ fetch_timestamp_result.stdout }}"
-    
-- name: Loop to run script for multiple shell scripts
+
+- name: Copy the customize crictl command to /tmp
+  copy:
+    src: crictl
+    dest: /tmp
+    mode: 0777
+ 
+- name: Loop to run script for crictl shell scripts
   include: run_script.yml
   with_items: "{{ shell_script }}"
 
